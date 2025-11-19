@@ -129,3 +129,5 @@ export const getResourceBySlug = (slug: string) =>
 
 export const getCompanyBySlug = (slug: string) =>
   companies.find((company) => company.slug === slug);
+
+export { resources };
