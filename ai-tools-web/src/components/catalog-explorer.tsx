@@ -24,11 +24,26 @@ import {
 } from "@/lib/catalog";
 import type { ResourceKind } from "@/types/resource";
 
-export function CatalogExplorer() {
-  const [query, setQuery] = useState("");
-  const [kinds, setKinds] = useState<ResourceKind[]>([]);
-  const [companies, setCompanies] = useState<string[]>([]);
-  const [tags, setTags] = useState<string[]>([]);
+type CatalogExplorerProps = {
+  initialQuery?: string;
+  initialCompanies?: string[];
+  initialKinds?: ResourceKind[];
+  initialTags?: string[];
+};
+
+const EMPTY_STRING_ARRAY: string[] = [];
+const EMPTY_KIND_ARRAY: ResourceKind[] = [];
+
+export function CatalogExplorer({
+  initialQuery = "",
+  initialCompanies = EMPTY_STRING_ARRAY,
+  initialKinds = EMPTY_KIND_ARRAY,
+  initialTags = EMPTY_STRING_ARRAY,
+}: CatalogExplorerProps) {
+  const [query, setQuery] = useState(initialQuery);
+  const [kinds, setKinds] = useState<ResourceKind[]>(initialKinds);
+  const [companies, setCompanies] = useState<string[]>(initialCompanies);
+  const [tags, setTags] = useState<string[]>(initialTags);
 
   const filtered = useMemo(
     () =>
@@ -137,7 +152,13 @@ export function CatalogExplorer() {
           </DropdownMenu>
 
           {hasFilters && (
-            <Button variant="ghost" size="sm" onClick={clearAll} className="gap-2 text-muted-foreground">
+            <Button
+              variant="ghost"
+              size="sm"
+              type="button"
+              onClick={clearAll}
+              className="gap-2 text-muted-foreground"
+            >
               <X className="h-4 w-4" /> Clear filters
             </Button>
           )}

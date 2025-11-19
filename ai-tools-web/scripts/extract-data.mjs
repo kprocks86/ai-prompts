@@ -132,7 +132,7 @@ const main = async () => {
   try {
     await fs.access(sourceRoot);
   } catch (error) {
-    console.error("Source repository not found at", sourceRoot);
+    console.error("Source repository not found at", sourceRoot, error);
     process.exit(1);
   }
 

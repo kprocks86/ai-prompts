@@ -20,7 +20,9 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="relative h-10 w-10 rounded-full border border-border"
+      type="button"
+      disabled={!mounted}
+      className="relative h-10 w-10 rounded-full border border-border disabled:opacity-60"
       onClick={toggleTheme}
       aria-label="Toggle theme"
     >
