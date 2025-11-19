@@ -1,7 +1,7 @@
 import { resources } from "@/data/resources";
 import type { Company, FilterOption, Resource, ResourceKind } from "@/types/resource";
 
-const slugify = (value: string) =>
+export const slugify = (value: string) =>
   value
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
